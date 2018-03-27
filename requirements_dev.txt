@@ -10,3 +10,7 @@ twine
 
 pytest==3.4.2
 pytest-runner==2.11.1
+
+# JC dev
+ipython
+jupyter
