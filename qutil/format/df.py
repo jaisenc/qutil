@@ -56,6 +56,19 @@ def color_negative_red_positive_green(val):
 
 def render(df, infer_objects=True, idx_fmtl=None, idx_fmth=None, idx_colour=None, idx_fmtpx=None,
            pct_dec=1, num_dec=2):
+    """
+    Render the DataFrame in style
+
+    :param df: DataFrame
+    :param infer_objects:
+    :param idx_fmtl:
+    :param idx_fmth:
+    :param idx_colour: green or red
+    :param idx_fmtpx: price
+    :param pct_dec: percentage decimal
+    :param num_dec: number decimal
+    :return:
+    """
     if infer_objects:
         df = df.convert_objects(convert_dates=True, convert_numeric=True, copy=True)
     st = df.style
@@ -65,4 +78,6 @@ def render(df, infer_objects=True, idx_fmtl=None, idx_fmth=None, idx_colour=None
         st = st.format(fmtn, decimal=0, subset=idx_fmth)
     if idx_fmtpx:
         st = st.format(fmtpx, subset=idx_fmtpx)
+    if idx_colour:
+        st = st.apply(color_negative_red_positive_green(), subset=idx_colour)
     return st
