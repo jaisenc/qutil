@@ -16,7 +16,7 @@ def email_smtp(subject, body_html,
                email_to=None,
                email_cc=None,
                email_bcc=None,
-               email_from_name='"Purpose Insights" <do_not_reply@purposeinvest.com>',
+               email_from_name='"Report" <do_not_reply@test.com>',
                attachment_list=None):
     """
 
@@ -164,6 +164,6 @@ if __name__ == '__main__':
     # server = smtplib.SMTP('Relay.appriver.com:2525')
     email_smtp(subject='test subject',
                body_html='<h1>this is a header</h1>',
-               email_to='jasonc@purposeinvest.com',
-               attachment_list=[os.path.normpath('C:\\Users\\jasonc\\Pictures\\logo.png')])
+               email_to='test@test.com',
+               attachment_list=[os.path.normpath('C:\\logo.png')])
     # server.quit()
