@@ -81,3 +81,19 @@ def render(df, infer_objects=True, idx_fmtl=None, idx_fmth=None, idx_colour=None
     if idx_colour:
         st = st.apply(color_negative_red_positive_green(), subset=idx_colour)
     return st
+
+
+def is_unique_values(df: pd.DataFrame, cols: list) -> dict:
+    """
+    Check if the columns have unique values
+    :param df: DataFrame
+    :param cols: list of str
+    :return: dict
+    """
+    out = dict()
+    for col in cols:
+        if col in df.columns:
+            out[col] = df[col].unique().shape[0] == df[col].shape[0]
+        else:
+            raise ValueError('{} is not a valid column name in the dataframe'.format(col))
+    return out
